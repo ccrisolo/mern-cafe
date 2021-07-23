@@ -5,6 +5,8 @@ const logger = require("morgan");
 
 require('dotenv').config();
 
+// Connect to the database
+require('./config/database');
 
 const app = express();
 
