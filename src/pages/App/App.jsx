@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import NewOrderPage from "../NewOrderPage";
 import AuthPage from "../AuthPage";
 import OrderHistoryPage from "../OrderHistoryPage";
+import { NavBar } from "../../components/NavBar";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 export default function App() {
@@ -11,15 +12,18 @@ export default function App() {
     return (
         <main className='App'>
             {user ? (
-                <Switch>
-                <Route path="/orders/new">
-                  <NewOrderPage />
-                </Route>
-                <Route path="/orders">
-                  <OrderHistoryPage />
-                </Route>
-                <Redirect to='/orders' />
-              </Switch>
+                <>
+                    <NavBar />
+                    <Switch>
+                        <Route path='/orders/new'>
+                            <NewOrderPage />
+                        </Route>
+                        <Route path='/orders'>
+                            <OrderHistoryPage />
+                        </Route>
+                        <Redirect to='/orders' />
+                    </Switch>
+                </>
             ) : (
                 <AuthPage />
             )}
