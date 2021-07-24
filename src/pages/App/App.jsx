@@ -7,7 +7,7 @@ import { NavBar } from "../../components/NavBar";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 export default function App() {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
 
     return (
         <main className='App'>
