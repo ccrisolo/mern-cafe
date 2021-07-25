@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {signUp} from '../utilities/users-service'
+import { signUp } from '../utilities/users-service';
 
 export default class SignUpForm extends Component {
     state = {
@@ -22,7 +22,7 @@ export default class SignUpForm extends Component {
         try {
             const formData = {
                 name: this.state.name,
-                emai: this.state.email,
+                email: this.state.email,
                 password: this.state.password,
             };
             const user = await signUp(formData);
