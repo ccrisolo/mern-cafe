@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+//add bcrypt library to hash password
+const bcrypt = require("bcrypt");
+
+//SALT_ROUNDS determine how much processing time it will take to perform the hash
+const SALT_ROUNDS = 6;
 
 //here is our user model
 const userSchema = new Schema(
@@ -29,5 +34,18 @@ const userSchema = new Schema(
         },
     }
 );
+
+userSchema.pre("save", function (next) {
+    //Save the reference to the user doc
+    const user = this;
+    if (!user.isModified("password")) return next();
+    //password has been change - salt and hash it
+    bcrypt.hash(user.password, SALT_ROUNDS, function (err, hash) {
+        if (err) return next(err);
+        //update the password property with the hash
+        user.password = hash;
+        return next();
+    });
+});
 
 module.exports = mongoose.model("User", userSchema);
