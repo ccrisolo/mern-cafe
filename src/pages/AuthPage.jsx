@@ -1,11 +1,11 @@
 import React from "react";
 import SignUpForm from "../components/SignUpForm";
 
-const AuthPage = () => {
+const AuthPage = ({setUser}) => {
     return (
         <main>
             <h1>AuthPage</h1>
-            <SignUpForm />
+            <SignUpForm setUser={setUser} />
         </main>
     );
 };

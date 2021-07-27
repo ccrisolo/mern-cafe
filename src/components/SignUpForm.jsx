@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { signUp } from '../utilities/users-service';
+import { signUp } from "../utilities/users-service";
 
 export default class SignUpForm extends Component {
     state = {
@@ -26,12 +26,10 @@ export default class SignUpForm extends Component {
                 password: this.state.password,
             };
             const user = await signUp(formData);
-            console.log("user", user);
+            this.props.setUser(user);
         } catch {
             this.setState({ error: "Sign Up Failed - Try Again" });
         }
-
-        alert(JSON.stringify(this.state));
     };
 
     render() {
