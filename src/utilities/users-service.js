@@ -33,3 +33,7 @@ export function getUser() {
     //If there's a token, return user in the payload, otherwise return null
     return token ? JSON.parse(atob(token.split(".")[1])).user : null;
 }
+
+export function logOut() {
+    localStorage.removeItem("token");
+}
