@@ -17,7 +17,7 @@ export async function signUp(userData) {
 export function getToken() {
     //getItem returns null if there's no string
     const token = localStorage.getItem("token");
-    console.log('token', token)
+    console.log("token", token);
     if (!token) return null;
     //check if token expired, remove if it is
     const payload = JSON.parse(atob(token.split(".")[1]));
@@ -41,14 +41,12 @@ export function logOut() {
 
 export async function login(credentials) {
     try {
-        // Delegate the network request code to the users-api.js API module
-        // which will ultimately return a JSON Web Token (JWT)
-        const token = await usersAPI.login(credentials)
-          //persist the 'token' in browsers local storage
-          localStorage.setItem("token", token);
-           // Baby step by returning whatever is sent back by the server
+        const token = await usersAPI.login(credentials);
+        //persist the 'token' in browsers local storage
+        localStorage.setItem("token", token);
+        // Baby step by returning whatever is sent back by the server
         return getUser();
     } catch {
-        throw new Error('Invalid credentials')
+        throw new Error("Invalid credentials");
     }
 }

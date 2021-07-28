@@ -20,13 +20,11 @@ export async function signUp(userData) {
 }
 
 export async function login(credentials) {
-  console.log('credentials', credentials)
     const res = await fetch(BASE_URL + "/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
     });
-    console.log('res', res)
     if (res.ok) {
         return res.json();
     } else {

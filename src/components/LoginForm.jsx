@@ -40,7 +40,7 @@ export default function LogIn({ setUser }) {
                 />
                 <label>Password</label>
                 <input
-                    type='text'
+                    type='password'
                     name='password'
                     value={credentials.password}
                     onChange={handleChange}
