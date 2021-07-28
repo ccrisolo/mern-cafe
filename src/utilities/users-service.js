@@ -50,3 +50,7 @@ export async function login(credentials) {
         throw new Error("Invalid credentials");
     }
 }
+
+export async function checkToken() {
+    return alert("clicked");
+}
