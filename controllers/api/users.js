@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 module.exports = {
     create,
     login,
+    checkToken,
 };
 
 async function create(req, res) {
@@ -45,4 +46,10 @@ async function login(req, res) {
     } catch {
         res.status(400).json("Bad Credentials");
     }
+}
+
+function checkToken(req, res) {
+    //req.user will always be ther for you when a token is sent
+    console.log("req.user", req.user);
+    res.json(req.exp);
 }
