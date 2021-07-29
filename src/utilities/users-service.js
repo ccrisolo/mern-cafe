@@ -50,3 +50,12 @@ export async function login(credentials) {
         throw new Error("Invalid credentials");
     }
 }
+
+export async function checkToken() {
+    return (
+        usersAPI
+            .checkToken()
+            //return a Date object for more flexibility
+            .then(dateStr => new Date(dateStr))
+    );
+}
